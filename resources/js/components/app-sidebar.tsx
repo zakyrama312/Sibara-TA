@@ -24,22 +24,27 @@ const mainNavItemsBeranda: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
-    {
-        title: 'Data Ruang',
-        icon: Building2,
-        children: [
-            {
-                title: 'Lab RPL',
-                href: '/ruang/1',
-            },
-            {
-                title: 'Lab ICT',
-                href: '/ruang/2',
-            },
-        ],
-    },
+    // {
+    //     title: 'Data Ruang',
+    //     icon: Building2,
+    //     children: [
+    //         {
+    //             title: 'Lab RPL',
+    //             href: '/ruang/1',
+    //         },
+    //         {
+    //             title: 'Lab ICT',
+    //             href: '/ruang/2',
+    //         },
+    //     ],
+    // },
 ];
 const mainNavItemsData: NavItem[] = [
+    {
+        title: 'Data Ruang',
+        href: '/data-ruang',
+        icon: Building2,
+    },
     {
         title: 'Barang Masuk',
         href: '/barang-masuk',
@@ -47,12 +52,12 @@ const mainNavItemsData: NavItem[] = [
     },
     {
         title: 'Peminjaman Barang',
-        href: '/peminjaman',
+        href: '/peminjaman-barang',
         icon: Dock,
     },
     {
-        title: 'Pengembalian Barang',
-        href: '/pengembalian',
+        title: 'Permintaan Barang',
+        href: '/permintaan-barang',
         icon: PanelBottomCloseIcon,
     },
 ];
@@ -64,8 +69,8 @@ const mainNavItemsMenu: NavItem[] = [
         icon: UserRound,
     },
     {
-        title: 'Jurusan',
-        href: '/jurusan',
+        title: 'Prodi',
+        href: '/prodi',
         icon: Blocks,
     },
     {
@@ -104,8 +109,8 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain label="Beranda" items={mainNavItemsBeranda} />
-                <NavMain label="Manajemen Barang" items={mainNavItemsData} />
                 <NavMain label="Menu" items={mainNavItemsMenu} />
+                <NavMain label="Manajemen Data" items={mainNavItemsData} />
             </SidebarContent>
 
             <SidebarFooter>

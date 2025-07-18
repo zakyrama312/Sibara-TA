@@ -1,7 +1,10 @@
+import PeminjamanChart from '@/components/dashboard/peminjamanChart';
+import { Calendar } from '@/components/ui/calendar';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import { SquareArrowOutUpRight } from 'lucide-react';
+import { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -11,12 +14,21 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
+                <div className="grid gap-4 md:grid-cols-3">
+                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative col-span-2 min-h-[300px] flex-1 overflow-hidden rounded-xl border p-2 md:min-h-min">
+                        <PeminjamanChart />
+                    </div>
+                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[300px] flex-1 overflow-hidden rounded-xl border p-2">
+                        <Calendar mode="single" selected={date} onSelect={setDate} className="w-full" captionLayout="dropdown" />
+                    </div>
+                </div>
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-gray-300 bg-[#d5d2f5] p-4 shadow-sm dark:border-gray-600">
+                    <div className="relative min-h-[300px] overflow-hidden rounded-xl border border-gray-300 bg-[#d5d2f5] p-4 shadow-sm dark:border-gray-600">
                         <div className="flex items-start justify-between text-sm font-medium text-gray-600">
                             <span>Total Barang</span>
                             <span className="rounded-full px-2 py-0.5 text-xs text-black">
@@ -40,8 +52,8 @@ export default function Dashboard() {
                         </div>
                     </div>
 
-                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
-                        <div className="relative aspect-video overflow-hidden rounded-xl border border-gray-300 bg-[#7bdcff] p-4 shadow-sm dark:border-gray-600">
+                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[300px] overflow-hidden rounded-xl border">
+                        <div className="relative min-h-[300px] overflow-hidden rounded-xl border border-gray-300 bg-[#7bdcff] p-4 shadow-sm dark:border-gray-600">
                             <div className="flex items-start justify-between text-sm font-medium text-gray-600">
                                 <span>Total Peminjam Aktif</span>
                                 <span className="rounded-full px-2 py-0.5 text-xs text-black">
@@ -62,8 +74,8 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
-                        <div className="relative aspect-video overflow-hidden rounded-xl border bg-[#ffe66b] p-4 shadow-sm dark:border-gray-600">
+                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[300px] overflow-hidden rounded-xl border">
+                        <div className="relative min-h-[300px] overflow-hidden rounded-xl border bg-[#ffe66b] p-4 shadow-sm dark:border-gray-600">
                             <div className="flex items-start justify-between text-sm font-medium text-gray-600">
                                 <span>Total Jurusan</span>
                                 <span className="rounded-full px-2 py-0.5 text-xs text-black">
@@ -88,9 +100,6 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                {/* <div className="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[70vh] flex-1 overflow-hidden rounded-xl border md:min-h-min">
-                    <PeminjamanChart />
-                </div> */}
             </div>
         </AppLayout>
     );

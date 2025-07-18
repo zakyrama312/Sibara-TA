@@ -38,7 +38,7 @@ export function NavMain({ items = [], label = '' }: { items: NavItem[]; label?: 
 
                             {/* Submenu */}
                             {isDropdown && isOpen && (
-                                <div className="ml-4">
+                                <div className="ml-7">
                                     {item.children?.map((child) => (
                                         <SidebarMenuItem key={child.title}>
                                             <SidebarMenuButton asChild isActive={child.href === page.url} tooltip={{ children: child.title }}>
